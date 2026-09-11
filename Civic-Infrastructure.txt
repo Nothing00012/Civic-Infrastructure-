@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MeraMohalla - Community Reporting</title>
+
+    <style>
+
+        /* Basic page styling */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f5;
+            color: #222;
+        }
+
+
+        /* Header */
+
+        header {
+            background-color: #174a3b;
+            color: white;
+            padding: 20px 8%;
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .tagline {
+            font-size: 13px;
+            color: #d8eee6;
+        }
+
+
+        /* Main container */
+
+        main {
+            width: 90%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+
+        /* Welcome area */
+
+        .welcome {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .welcome h1 {
+            color: #174a3b;
+            margin-top: 0;
+        }
+
+        .welcome p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+
+        /* Statistics */
+
+        .statistics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat {
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .stat h3 {
+            font-size: 13px;
+            color: #777;
+        }
+
+        .stat p {
+            font-size: 25px;
+            font-weight: bold;
+            color: #174a3b;
+        }
+
+
+        /* Two-column area */
+
+        .main-area {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 25px;
+        }
+
+
+        /* Cards */
+
+        .card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #174a3b;
+        }
+
+
+        /* Form */
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            border: none;
+            border-radius: 6px;
+            padding: 11px 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .submit-button {
+            width: 100%;
+            margin-top: 20px;
+            background-color: #174a3b;
+            color: white;
+        }
+
+        .submit-button:hover {
+            background-color: #0f382c;
+        }
+
+
+        /* Search */
+
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+
+        /* Complaint card */
+
+        .complaint {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+
+        .complaint-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .complaint-title {
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .category {
+            background-color: #e7f2ed;
+            color: #174a3b;
+            padding: 5px 8px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+
+        .complaint p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+
+        /* Complaint information */
+
+        .information {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 13px;
+            color: #777;
+        }
+
+
+        /* Status */
+
+        .status {
+            padding: 5px 8px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .reported {
+            background-color: #fff1cc;
+            color: #946d00;
+        }
+
+        .progress {
+            background-color: #e5efff;
+            color: #1769aa;
+        }
+
+        .resolved {
+            background-color: #e5f5eb;
+            color: #217548;
+        }
+
+
+        /* Community attention */
+
+        .attention {
+            margin-top: 15px;
+            background-color: #f5f8f6;
+            padding: 12px;
+            border-radius: 7px;
+        }
+
+        .attention strong {
+            color: #174a3b;
+        }
+
+
+        /* Buttons inside complaint */
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 12px;
+            border-top: 1px solid #eee;
+        }
+
+        .vote {
+            background-color: #edf1ef;
+            color: #333;
+        }
+
+        .vote:hover {
+            background-color: #dfe7e3;
+        }
+
+        .update {
+            background-color: white;
+            color: #174a3b;
+            border: 1px solid #174a3b;
+        }
+
+
+        /* Timeline */
+
+        .timeline {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8faf9;
+            border-radius: 8px;
+        }
+
+        .timeline p {
+            border-left: 3px solid #174a3b;
+            padding-left: 10px;
+            margin: 12px 0;
+        }
+
+
+        /* Mobile */
+
+        @media (max-width: 800px) {
+
+            .header-content {
+                display: block;
+            }
+
+            .tagline {
+                margin-top: 5px;
+            }
+
+            .statistics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .main-area {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .statistics {
+                grid-template-columns: 1fr;
+            }
+
+            .complaint-header {
+                display: block;
+            }
+
+            .category {
+                display: inline-block;
+                margin-top: 8px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Website header -->
+
+    <header>
+
+        <div class="header-content">
+
+            <div>
+
+                <div class="logo">
+                    MeraMohalla
+                </div>
+
+                <div class="tagline">
+                    See it. Report it. Follow it.
+                </div>
+
+            </div>
+
+            <div>
+                📍 My Community
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- Introduction -->
+
+        <section class="welcome">
+
+            <h1>
+                What's wrong in your neighbourhood?
+            </h1>
+
+            <p>
+                Small problems often stay unnoticed because people
+                don't know where to report them or what happens
+                after reporting. MeraMohalla helps residents report
+                problems and follow their progress.
+            </p>
+
+        </section>
+
+
+        <!-- Statistics -->
+
+        <section class="statistics">
+
+            <div class="stat">
+
+                <h3>
+                    Total Reports
+                </h3>
+
+                <p id="totalReports">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h3>
+                    Being Followed Up
+                </h3>
+
+                <p id="progressReports">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h3>
+                    Resolved
+                </h3>
+
+                <p id="resolvedReports">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h3>
+                    Community Support
+                </h3>
+
+                <p id="totalSupport">
+                    0
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Main area -->
+
+        <div class="main-area">
+
+
+            <!-- Report form -->
+
+            <section class="card">
+
+                <h2>
+                    Report a Problem
+                </h2>
+
+                <form id="reportForm">
+
+
+                    <label for="problem">
+                        What is the problem?
+                    </label>
+
+                    <input
+                        type="text"
+                        id="problem"
+                        placeholder="Example: Broken streetlight"
+                        required
+                    >
+
+
+                    <label for="category">
+                        Category
+                    </label>
+
+                    <select id="category">
+
+                        <option>
+                            Roads
+                        </option>
+
+                        <option>
+                            Garbage
+                        </option>
+
+                        <option>
+                            Streetlight
+                        </option>
+
+                        <option>
+                            Water
+                        </option>
+
+                        <option>
+                            Public Safety
+                        </option>
+
+                        <option>
+                            Other
+                        </option>
+
+                    </select>
+
+
+                    <label for="area">
+                        Area / Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="area"
+                        placeholder="Example: Model Town"
+                        required
+                    >
+
+
+                    <label for="description">
+                        Describe the problem
+                    </label>
+
+                    <textarea
+                        id="description"
+                        placeholder="Explain what is happening..."
+                        required
+                    ></textarea>
+
+
+                    <label for="urgency">
+                        Urgency
+                    </label>
+
+                    <select id="urgency">
+
+                        <option>
+                            Low
+                        </option>
+
+                        <option selected>
+                            Medium
+                        </option>
+
+                        <option>
+                            High
+                        </option>
+
+                    </select>
+
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                    >
+                        Submit Report
+                    </button>
+
+
+                </form>
+
+            </section>
+
+
+            <!-- Community reports -->
+
+            <section class="card">
+
+                <h2>
+                    Community Reports
+                </h2>
+
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="search"
+                        placeholder="Search by problem or area..."
+                    >
+
+                </div>
+
+
+                <div id="complaintList">
+
+                    <!-- Reports will appear here -->
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+
+        // -----------------------------------
+        // Sample complaints
+        // -----------------------------------
+
+        let complaints = [
+
+            {
+                id: 1,
+
+                problem:
+                    "Large pothole near the market",
+
+                category:
+                    "Roads",
+
+                area:
+                    "Model Town",
+
+                description:
+                    "A large pothole has appeared near the market and is making it difficult for two-wheelers to pass.",
+
+                urgency:
+                    "High",
+
+                status:
+                    "In Progress",
+
+                supporters:
+                    14
+
+            },
+
+
+            {
+                id: 2,
+
+                problem:
+                    "Garbage not collected",
+
+                category:
+                    "Garbage",
+
+                area:
+                    "Green Park",
+
+                description:
+                    "Garbage has not been collected for several days and is starting to create a bad smell.",
+
+                urgency:
+                    "Medium",
+
+                status:
+                    "Reported",
+
+                supporters:
+                    6
+
+            },
+
+
+            {
+                id: 3,
+
+                problem:
+                    "Streetlight not working",
+
+                category:
+                    "Streetlight",
+
+                area:
+                    "College Road",
+
+                description:
+                    "The streetlight has not been working for almost a week.",
+
+                urgency:
+                    "Medium",
+
+                status:
+                    "Resolved",
+
+                supporters:
+                    21
+
+            }
+
+        ];
+
+
+        // -----------------------------------
+        // Load saved data
+        // -----------------------------------
+
+        let savedData =
+            localStorage.getItem("myComplaints");
+
+
+        if (savedData) {
+
+            complaints =
+                JSON.parse(savedData);
+
+        }
+
+
+        // -----------------------------------
+        // Save complaints
+        // -----------------------------------
+
+        function saveComplaints() {
+
+            localStorage.setItem(
+                "myComplaints",
+                JSON.stringify(complaints)
+            );
+
+        }
+
+
+        // -----------------------------------
+        // Calculate community attention
+        // -----------------------------------
+
+        function getAttention(complaint) {
+
+            let score =
+                complaint.supporters;
+
+
+            // High urgency gets more attention
+
+            if (complaint.urgency === "High") {
+
+                score = score + 10;
+
+            }
+
+
+            // Safety problems are important
+
+            if (complaint.category === "Public Safety") {
+
+                score = score + 5;
+
+            }
+
+
+            return score;
+
+        }
+
+
+        // -----------------------------------
+        // Display complaints
+        // -----------------------------------
+
+        function displayComplaints() {
+
+            let list =
+                document.getElementById(
+                    "complaintList"
+                );
+
+
+            let search =
+                document.getElementById(
+                    "search"
+                ).value.toLowerCase();
+
+
+            list.innerHTML = "";
+
+
+            let found = false;
+
+
+            complaints.forEach(
+                function(complaint) {
+
+
+                    let problem =
+                        complaint.problem.toLowerCase();
+
+
+                    let area =
+                        complaint.area.toLowerCase();
+
+
+                    // Search filter
+
+                    if (
+                        !problem.includes(search) &&
+                        !area.includes(search)
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    found = true;
+
+
+                    // Decide status class
+
+                    let statusClass =
+                        "reported";
+
+
+                    if (
+                        complaint.status ===
+                        "In Progress"
+                    ) {
+
+                        statusClass =
+                            "progress";
+
+                    }
+
+
+                    if (
+                        complaint.status ===
+                        "Resolved"
+                    ) {
+
+                        statusClass =
+                            "resolved";
+
+                    }
+
+
+                    // Create card
+
+                    let card =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    card.className =
+                        "complaint";
+
+
+                    card.innerHTML = `
+
+                        <div class="complaint-header">
+
+                            <div class="complaint-title">
+
+                                ${complaint.problem}
+
+                            </div>
+
+                            <div class="category">
+
+                                ${complaint.category}
+
+                            </div>
+
+                        </div>
+
+
+                        <p>
+
+                            ${complaint.description}
+
+                        </p>
+
+
+                        <div class="information">
+
+                            <span>
+                                📍 ${complaint.area}
+                            </span>
+
+                            <span>
+                                Priority:
+                                ${complaint.urgency}
+                            </span>
+
+                            <span
+                                class="status ${statusClass}"
+                            >
+                                ${complaint.status}
+                            </span>
+
+                        </div>
+
+
+                        <div class="attention">
+
+                            Community attention:
+
+                            <strong>
+                                ${getAttention(complaint)}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="actions">
+
+                            <button
+                                class="vote"
+                                onclick="supportComplaint(${complaint.id})"
+                            >
+                                👍 Support
+                                (${complaint.supporters})
+                            </button>
+
+
+                            <button
+                                class="update"
+                                onclick="showTimeline(${complaint.id})"
+                            >
+                                View Follow-up
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            class="timeline"
+                            id="timeline-${complaint.id}"
+                        >
+
+                            <p>
+                                Report submitted
+                            </p>
+
+                            <p>
+                                Community members can support this issue
+                            </p>
+
+                            <p>
+                                Current status:
+                                ${complaint.status}
+                            </p>
+
+                        </div>
+
+                    `;
+
+
+                    list.appendChild(card);
+
+                }
+            );
+
+
+            if (!found) {
+
+                list.innerHTML = `
+
+                    <p>
+                        No reports found.
+                    </p>
+
+                `;
+
+            }
+
+
+            updateStatistics();
+
+        }
+
+
+        // -----------------------------------
+        // Submit new complaint
+        // -----------------------------------
+
+        document
+            .getElementById("reportForm")
+            .addEventListener(
+                "submit",
+                function(event) {
+
+
+                    // Stop the page from refreshing
+
+                    event.preventDefault();
+
+
+                    // Get form values
+
+                    let problem =
+                        document.getElementById(
+                            "problem"
+                        ).value;
+
+
+                    let category =
+                        document.getElementById(
+                            "category"
+                        ).value;
+
+
+                    let area =
+                        document.getElementById(
+                            "area"
+                        ).value;
+
+
+                    let description =
+                        document.getElementById(
+                            "description"
+                        ).value;
+
+
+                    let urgency =
+                        document.getElementById(
+                            "urgency"
+                        ).value;
+
+
+                    // Create complaint
+
+                    let newComplaint = {
+
+                        id:
+                            Date.now(),
+
+                        problem:
+                            problem,
+
+                        category:
+                            category,
+
+                        area:
+                            area,
+
+                        description:
+                            description,
+
+                        urgency:
+                            urgency,
+
+                        status:
+                            "Reported",
+
+                        supporters:
+                            1
+
+                    };
+
+
+                    // Add to beginning
+
+                    complaints.unshift(
+                        newComplaint
+                    );
+
+
+                    // Save
+
+                    saveComplaints();
+
+
+                    // Show updated list
+
+                    displayComplaints();
+
+
+                    // Clear form
+
+                    document
+                        .getElementById(
+                            "reportForm"
+                        )
+                        .reset();
+
+
+                    alert(
+                        "Your problem has been reported!"
+                    );
+
+                }
+            );
+
+
+        // -----------------------------------
+        // Support a complaint
+        // -----------------------------------
+
+        function supportComplaint(id) {
+
+
+            let complaint =
+                complaints.find(
+                    function(item) {
+
+                        return item.id === id;
+
+                    }
+                );
+
+
+            if (complaint) {
+
+                complaint.supporters =
+                    complaint.supporters + 1;
+
+
+                saveComplaints();
+
+                displayComplaints();
+
+            }
+
+        }
+
+
+        // -----------------------------------
+        // Show follow-up timeline
+        // -----------------------------------
+
+        function showTimeline(id) {
+
+
+            let timeline =
+                document.getElementById(
+                    "timeline-" + id
+                );
+
+
+            if (
+                timeline.style.display ===
+                "block"
+            ) {
+
+                timeline.style.display =
+                    "none";
+
+            }
+
+            else {
+
+                timeline.style.display =
+                    "block";
+
+            }
+
+        }
+
+
+        // -----------------------------------
+        // Update statistics
+        // -----------------------------------
+
+        function updateStatistics() {
+
+
+            // Total complaints
+
+            document.getElementById(
+                "totalReports"
+            ).innerText =
+                complaints.length;
+
+
+            // Complaints in progress
+
+            let progress =
+                complaints.filter(
+                    function(item) {
+
+                        return item.status ===
+                            "In Progress";
+
+                    }
+                ).length;
+
+
+            document.getElementById(
+                "progressReports"
+            ).innerText =
+                progress;
+
+
+            // Resolved complaints
+
+            let resolved =
+                complaints.filter(
+                    function(item) {
+
+                        return item.status ===
+                            "Resolved";
+
+                    }
+                ).length;
+
+
+            document.getElementById(
+                "resolvedReports"
+            ).innerText =
+                resolved;
+
+
+            // Total community support
+
+            let support = 0;
+
+
+            complaints.forEach(
+                function(item) {
+
+                    support =
+                        support +
+                        item.supporters;
+
+                }
+            );
+
+
+            document.getElementById(
+                "totalSupport"
+            ).innerText =
+                support;
+
+        }
+
+
+        // -----------------------------------
+        // Search
+        // -----------------------------------
+
+        document
+            .getElementById("search")
+            .addEventListener(
+                "input",
+                function() {
+
+                    displayComplaints();
+
+                }
+            );
+
+
+        // -----------------------------------
+        // Start the website
+        // -----------------------------------
+
+        displayComplaints();
+
+        updateStatistics();
+
+
+    </script>
+
+
+</body>
+
+</html>
